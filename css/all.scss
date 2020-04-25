@@ -5,13 +5,16 @@
 }
 body {
   font-family: 微軟正黑體, "Roboto", "Noto Sans TC", sans-serif;
+  line-height: 1.5;
+  font-weight: bold;
+}
+a {
+  display: block;
+  text-decoration: none;
 }
 img {
   max-width: 100%;
   height: auto;
-}
-a {
-  text-decoration: none;
 }
 $base-margin: 8px;
 $margin-level: 7;
@@ -30,86 +33,183 @@ $base-color: #aa0601;
     }
   }
 }
-@mixin font-base($font-size, $font-color, $font-weight) {
-  font-size: $font-size;
-  line-height: $font-size * 1.5;
-  font-weight: $font-weight;
-  color: $font-color;
-}
 @mixin flex-base($justify-content, $align-items) {
   display: flex;
   justify-content: $justify-content;
   align-items: $align-items;
 }
-@mixin banner($img) {
-  background-size: cover;
-  background-repeat: no-repeat;
+@mixin bg($img) {
   background-image: url($img);
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+@function col-width($col) {
+  @return 100% / $col;
+}
+%content-width {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 @for $i from 1 through $margin-level {
-  .mbLevel--#{$i} {
+  .mbLevel-#{$i} {
     margin-bottom: ($i * $base-margin);
   }
 }
 
+//header
 .header {
   @include flex-base(space-between, center);
   background-color: $base-color;
+  @include breakpoint(mobile) {
+    position: relative;
+    justify-content: start;
+    overflow: hidden;
+  }
+  .ham-icon {
+    display: none;
+    color: $text-secondary;
+    @include breakpoint(mobile) {
+      display: block;
+      margin: 0 124px 0 16px;
+    }
+  }
   .logo {
     width: 80px;
     height: 50px;
-    background-image: url(https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/logo.png);
-    background-repeat: no-repeat;
+    @include bg(
+      "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/logo.png"
+    );
     text-indent: 101%;
     white-space: nowrap;
     overflow: hidden;
     margin-left: 88px;
+    @include breakpoint(pad) {
+      margin-left: 48px;
+    }
+    @include breakpoint(mobile) {
+      width: 48px;
+      height: 30px;
+      @include bg("https://upload.cc/i1/2020/04/25/qNFjUf.png");
+      margin: 10px 0;
+    }
   }
   .nav {
     @include flex-base(center, center);
     margin-right: 88px;
     padding: 40px 0;
+    @include breakpoint(pad) {
+      margin-right: 48px;
+    }
+    @include breakpoint(mobile) {
+      position: absolute;
+      flex-direction: column;
+      max-height: 0px;
+      overflow: hidden;
+      top: 100%;
+      z-index: 1;
+    }
+    .list {
+      background-color: $base-color;
+      @include breakpoint(mobile) {
+        width: 375px;
+      }
+    }
     .menu {
-      @include font-base(20px, $text-secondary, normal);
+      font-size: 20px;
+      font-weight: normal;
       margin-left: 64px;
+      color: $text-secondary;
+      @include breakpoint(pad) {
+        margin-left: 40px;
+      }
+      @include breakpoint(mobile) {
+        margin-left: auto;
+        text-align: center;
+        border-top: 1px solid $text-secondary;
+        padding: 16px 0;
+      }
     }
   }
 }
+.nav .active {
+  max-height: 200px;
+}
+
+//banner
 .banner {
-  max-width: 100%;
+  position: relative;
   height: 840px;
-  @include banner(
+  @include bg(
     "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/banner.png"
   );
+  @include breakpoint(pad) {
+    @include bg("https://upload.cc/i1/2020/04/25/jH0crS.png");
+  }
+  @include breakpoint(mobile) {
+    @include bg("https://upload.cc/i1/2020/04/25/Z0h7q1.png");
+    height: 394px;
+  }
   .content {
     position: absolute;
     top: 50%;
+    bottom: 50%;
     left: 55%;
+    @include breakpoint(pad) {
+      left: 35%;
+    }
+    @include breakpoint(mobile) {
+      top: 40%;
+      left: 20%;
+    }
     .text {
-      @include font-base(36px, $text-primary, bold);
+      font-size: 36px;
       text-align: end;
+      color: $text-primary;
+      @include breakpoint(pad) {
+        font-size: 20px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 16px;
+      }
     }
     .title {
-      @include font-base(64px, $text-primary, bold);
+      font-size: 64px;
+      color: $text-primary;
+      @include breakpoint(pad) {
+        font-size: 48px;
+      }
+      @include breakpoint(mobile) {
+        font-size: 32px;
+      }
     }
   }
 }
+//column
 .column {
   background-color: $bg-primary;
   .title {
-    @include font-base(48px, $text-primary, bold);
+    font-size: 48px;
+    color: $text-primary;
     text-align: center;
     padding: 64px 0;
+    @include breakpoint(mobile) {
+      font-size: 24px;
+      padding: 32px 0;
+    }
   }
   .list {
-    width: 1270px;
+    @extend %content-width;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
     padding-bottom: 80px;
     margin-bottom: 64px;
+    @include breakpoint(pad) {
+      flex-wrap: wrap;
+      width: col-width(1.5);
+    }
     .item {
-      width: 208px;
+      max-width: 208px;
       text-align: center;
       .img {
         width: 100px;
@@ -117,29 +217,38 @@ $base-color: #aa0601;
         margin-bottom: 40px;
       }
       .list-title {
-        @include font-base(24px, $text-primary, bold);
+        font-size: 24px;
+        color: $text-primary;
       }
       .text {
-        @include font-base(16px, normal, normal);
+        font-size: 16px;
         text-align: start;
+      }
+    }
+    @include breakpoint(pad) {
+      .itemaa {
+        order: 1;
       }
     }
   }
 }
-.product {
-  .title {
-    @include font-base(48px, $text-primary, bold);
-    text-align: center;
-    margin-bottom: 64px;
-  }
-  .list {
-    width: 1400px;
-    margin: 0 auto;
-  }
-  .item {
-    @include flex-base(start, center);
-  }
-  .list :nth-child(odd) {
-    font-size: 50px;
-  }
-}
+
+//product
+// .product {
+//   @extend %content-width;
+//   .title {
+//     @include font-base(48px, $text-primary, bold);
+//     text-align: center;
+//     margin-bottom: 64px;
+//   }
+//   .list {
+//     max-width: 1400px;
+//     margin: 0 auto;
+//   }
+//   .item {
+//     @include flex-base(start, center);
+//   }
+//   .list :nth-child(odd) {
+//     font-size: 50px;
+//   }
+// }
