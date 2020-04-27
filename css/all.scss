@@ -401,6 +401,36 @@ $font-p4: 14px;
       }
     }
   }
+  .icon-sunglasses {
+    @include breakpoint(mobile) {
+      width: 32px;
+      height: 32px;
+      @include bg(
+        "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg"
+      );
+      margin: 0 8px 0 70px;
+    }
+  }
+  .icon-optical {
+    @include breakpoint(mobile) {
+      width: 32px;
+      height: 25px;
+      @include bg(
+        "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg"
+      );
+      margin: 8px;
+    }
+  }
+  .icon-functional {
+    @include breakpoint(mobile) {
+      width: 23px;
+      height: 32px;
+      @include bg(
+        "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg"
+      );
+      margin: 5px 8px 0 0;
+    }
+  }
   .img-icon {
     margin: 0 8px 0 24px;
     @include breakpoint(pad) {
@@ -409,6 +439,7 @@ $font-p4: 14px;
     }
     @include breakpoint(mobile) {
       color: $base-secondary;
+      display: none;
     }
   }
   .img-mr {

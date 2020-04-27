@@ -521,6 +521,42 @@ h6 {
   }
 }
 
+@media only screen and (max-width: 375px) {
+  .product .icon-sunglasses {
+    width: 32px;
+    height: 32px;
+    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 8px 0 70px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .icon-optical {
+    width: 32px;
+    height: 25px;
+    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 8px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .icon-functional {
+    width: 23px;
+    height: 32px;
+    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 5px 8px 0 0;
+  }
+}
+
 .product .img-icon {
   margin: 0 8px 0 24px;
 }
@@ -535,6 +571,7 @@ h6 {
 @media only screen and (max-width: 375px) {
   .product .img-icon {
     color: #ffffff;
+    display: none;
   }
 }
 
