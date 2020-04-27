@@ -6,7 +6,7 @@
 body {
   font-family: 微軟正黑體, "Roboto", "Noto Sans TC", sans-serif;
   line-height: 1.5;
-  font-weight: bold;
+  font-size: 16px;
 }
 a {
   display: block;
@@ -16,12 +16,57 @@ img {
   max-width: 100%;
   height: auto;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
 $base-margin: 8px;
 $margin-level: 7;
 $text-primary: #650300;
-$text-secondary: #ffffff;
 $bg-primary: #aa06010d;
-$base-color: #aa0601;
+$base-primary: #aa0601;
+$base-secondary: #ffffff;
+$font-h2: (
+  pc: 72px,
+  pad: 32px,
+  mobile: 32px,
+);
+$font-h3: (
+  pc: 64px,
+  pad: 48px,
+  mobile: 32px,
+);
+$font-h4: (
+  pc: 48px,
+  pad: 32px,
+  mobile: 24px,
+);
+$font-h5: (
+  pc: 48px,
+  pad: 28px,
+  mobile: 28px,
+);
+$font-h6: (
+  pc: 24px,
+  pad: 20px,
+  mobile: 20px,
+);
+$font-p1: (
+  pc: 36px,
+  pad: 20px,
+  mobile: 16px,
+);
+$font-p2: (
+  pc: 20px,
+  pad: 16px,
+  mobile: 16px,
+);
+$font-p3: 20px;
+$font-p4: 14px;
 @mixin breakpoint($point) {
   @if ($point == pad) {
     @media only screen and (max-width: 768px) {
@@ -31,6 +76,72 @@ $base-color: #aa0601;
     @media only screen and (max-width: 375px) {
       @content;
     }
+  }
+}
+@mixin font-h($size) {
+  @if ($size == h2) {
+    font-size: map-get($font-h2, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h2, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h2, mobile);
+    }
+  } @else if ($size == h3) {
+    font-size: map-get($font-h3, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h3, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h3, mobile);
+    }
+  } @else if ($size == h4) {
+    font-size: map-get($font-h4, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h4, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h4, mobile);
+    }
+  } @else if ($size == h5) {
+    font-size: map-get($font-h5, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h5, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h5, mobile);
+    }
+  } @else if ($size == h6) {
+    font-size: map-get($font-h6, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h6, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h6, mobile);
+    }
+  }
+}
+@mixin font-p($size) {
+  @if ($size == p1) {
+    font-size: map-get($font-p1, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-p1, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-p1, mobile);
+    }
+  } @else if ($size == p2) {
+    font-size: map-get($font-p2, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-p2, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-p2, mobile);
+    }
+  } @else if ($size == p3) {
+    font-size: $font-p3;
+  } @else if ($size == p4) {
+    font-size: $font-p4;
   }
 }
 @mixin flex-base($justify-content, $align-items) {
@@ -47,27 +158,28 @@ $base-color: #aa0601;
 @function col-width($col) {
   @return 100% / $col;
 }
-%content-width {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+
 @for $i from 1 through $margin-level {
   .mbLevel-#{$i} {
     margin-bottom: ($i * $base-margin);
   }
 }
-
+%content-width {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 //header
 .header {
+  max-width: 100%;
   @include flex-base(space-between, center);
-  background-color: $base-color;
+  background-color: $base-primary;
   @include breakpoint(mobile) {
     position: relative;
     justify-content: start;
   }
   .ham-icon {
     display: none;
-    color: $text-secondary;
+    color: $base-secondary;
     @include breakpoint(mobile) {
       display: block;
       margin: 0 124px 0 16px;
@@ -103,14 +215,15 @@ $base-color: #aa0601;
     @include breakpoint(mobile) {
       position: absolute;
       flex-direction: column;
+      width: 100%;
       padding: 0px;
       top: 100%;
       z-index: 1;
     }
     .list {
-      background-color: $base-color;
+      background-color: $base-primary;
       @include breakpoint(mobile) {
-        width: 375px;
+        width: 100%;
         transform: translateX(-100%);
         transition: all 0.8s;
         &:hover {
@@ -122,17 +235,16 @@ $base-color: #aa0601;
       transform: translateX(0);
     }
     .menu {
-      font-size: 20px;
-      font-weight: normal;
+      @include font-p(p3);
       margin-left: 64px;
-      color: $text-secondary;
+      color: $base-secondary;
       @include breakpoint(pad) {
         margin-left: 40px;
       }
       @include breakpoint(mobile) {
         margin-left: auto;
         text-align: center;
-        border-top: 1px solid $text-secondary;
+        border-top: 1px solid $base-secondary;
         padding: 16px 0;
       }
     }
@@ -166,25 +278,13 @@ $base-color: #aa0601;
       left: 20%;
     }
     .text {
-      font-size: 36px;
+      @include font-p(p1);
       text-align: end;
       color: $text-primary;
-      @include breakpoint(pad) {
-        font-size: 20px;
-      }
-      @include breakpoint(mobile) {
-        font-size: 16px;
-      }
     }
     .title {
-      font-size: 64px;
+      @include font-h(h3);
       color: $text-primary;
-      @include breakpoint(pad) {
-        font-size: 48px;
-      }
-      @include breakpoint(mobile) {
-        font-size: 32px;
-      }
     }
   }
 }
@@ -192,26 +292,28 @@ $base-color: #aa0601;
 .column {
   background-color: $bg-primary;
   margin-bottom: 64px;
+  @include breakpoint(pad) {
+    margin-bottom: 40px;
+  }
+  @include breakpoint(mobile) {
+    margin-bottom: 24px;
+  }
   .title {
-    font-size: 48px;
+    @include font-h(h4);
     color: $text-primary;
     text-align: center;
     padding: 64px 0;
     @include breakpoint(pad) {
-      font-size: 32px;
       padding: 40px 0 32px 0;
     }
     @include breakpoint(mobile) {
-      font-size: 24px;
       padding: 32px 0;
     }
   }
   .list {
     @extend %content-width;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    @include flex-base(space-around, center);
     padding-bottom: 80px;
     @include breakpoint(pad) {
       flex-wrap: wrap;
@@ -231,7 +333,7 @@ $base-color: #aa0601;
         margin-bottom: 28px;
       }
       .img {
-        width: 100px;
+        max-width: 100px;
         height: 100px;
         margin-bottom: 40px;
         @include breakpoint(pad) {
@@ -241,41 +343,101 @@ $base-color: #aa0601;
         }
       }
       .list-title {
-        font-size: 24px;
+        @include font-h(h6);
         color: $text-primary;
         @include breakpoint(pad) {
           margin-bottom: 8px;
         }
-        @include breakpoint(mobile) {
-          font-size: 20px;
-        }
       }
       .text {
-        font-size: 16px;
         text-align: start;
       }
     }
   }
 }
 
-// product
 .product {
   @extend %content-width;
-  .title {
-    font-size: 48px;
-    color: $text-primary;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 64px;
-  }
-  .item-end {
-    display: flex;
-    justify-content: end;
-  }
-  .text-end {
-    text-align: end;
-  }
   .item {
     @include flex-base(start, center);
+    margin-bottom: 24px;
+    @include breakpoint(pad) {
+      margin-left: 48px;
+      margin-bottom: 8px;
+    }
+    @include breakpoint(mobile) {
+      justify-content: center;
+      margin-left: 0;
+    }
+  }
+  .item-flex {
+    display: flex;
+    @include breakpoint(mobile) {
+      position: absolute;
+    }
+  }
+  .item-reverse {
+    @include flex-base(start, center);
+    flex-direction: row-reverse;
+    @include breakpoint(pad) {
+      flex-direction: row;
+    }
+  }
+  .content-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    @include breakpoint(mobile) {
+      position: absolute;
+    }
+  }
+  .img {
+    @include breakpoint(pad) {
+      width: 410px;
+      height: 168px;
+      @include breakpoint(mobile) {
+        width: 352px;
+        height: 134px;
+        position: relative;
+      }
+    }
+  }
+  .img-icon {
+    margin: 0 8px 0 24px;
+    @include breakpoint(pad) {
+      width: 32px;
+      height: 32px;
+    }
+    @include breakpoint(mobile) {
+      color: $base-secondary;
+    }
+  }
+  .img-mr {
+    @include breakpoint(pad) {
+      margin-right: 40px;
+    }
+    @include breakpoint(mobile) {
+      margin-right: 0;
+    }
+  }
+  .title {
+    @include font-h(h4);
+    color: $text-primary;
+    text-align: center;
+    margin-bottom: 60px;
+    @include breakpoint(pad) {
+      margin-bottom: 32px;
+    }
+    @include breakpoint(mobile) {
+      margin-bottom: 16px;
+    }
+  }
+  .text {
+    @include font-h(h5);
+    color: $base-primary;
+    margin-right: 24px;
+    line-height: normal;
+    @include breakpoint(mobile) {
+      color: $base-secondary;
+    }
   }
 }

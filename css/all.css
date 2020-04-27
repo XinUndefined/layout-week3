@@ -9,7 +9,7 @@
 body {
   font-family: 微軟正黑體, "Roboto", "Noto Sans TC", sans-serif;
   line-height: 1.5;
-  font-weight: bold;
+  font-size: 16px;
 }
 
 a {
@@ -22,9 +22,13 @@ img {
   height: auto;
 }
 
-.column .list, .product {
-  max-width: 1200px;
-  margin: 0 auto;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
 }
 
 .mbLevel-1 {
@@ -55,7 +59,13 @@ img {
   margin-bottom: 56px;
 }
 
+.column .list, .product {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .header {
+  max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -147,6 +157,7 @@ img {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    width: 100%;
     padding: 0px;
     top: 100%;
     z-index: 1;
@@ -159,7 +170,7 @@ img {
 
 @media only screen and (max-width: 375px) {
   .header .nav .list {
-    width: 375px;
+    width: 100%;
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
     -webkit-transition: all 0.8s;
@@ -177,7 +188,6 @@ img {
 
 .header .nav .menu {
   font-size: 20px;
-  font-weight: normal;
   margin-left: 64px;
   color: #ffffff;
 }
@@ -285,6 +295,18 @@ img {
   margin-bottom: 64px;
 }
 
+@media only screen and (max-width: 768px) {
+  .column {
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .column {
+    margin-bottom: 24px;
+  }
+}
+
 .column .title {
   font-size: 48px;
   color: #650300;
@@ -295,13 +317,23 @@ img {
 @media only screen and (max-width: 768px) {
   .column .title {
     font-size: 32px;
-    padding: 40px 0 32px 0;
   }
 }
 
 @media only screen and (max-width: 375px) {
   .column .title {
     font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .column .title {
+    padding: 40px 0 32px 0;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .column .title {
     padding: 32px 0;
   }
 }
@@ -352,7 +384,7 @@ img {
 }
 
 .column .list .item .img {
-  width: 100px;
+  max-width: 100px;
   height: 100px;
   margin-bottom: 40px;
 }
@@ -372,7 +404,7 @@ img {
 
 @media only screen and (max-width: 768px) {
   .column .list .item .list-title {
-    margin-bottom: 8px;
+    font-size: 20px;
   }
 }
 
@@ -382,30 +414,14 @@ img {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .column .list .item .list-title {
+    margin-bottom: 8px;
+  }
+}
+
 .column .list .item .text {
-  font-size: 16px;
   text-align: start;
-}
-
-.product .title {
-  font-size: 48px;
-  color: #650300;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 64px;
-}
-
-.product .item-end {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-}
-
-.product .text-end {
-  text-align: end;
 }
 
 .product .item {
@@ -418,5 +434,175 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 24px;
+}
+
+@media only screen and (max-width: 768px) {
+  .product .item {
+    margin-left: 48px;
+    margin-bottom: 8px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .item {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-left: 0;
+  }
+}
+
+.product .item-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media only screen and (max-width: 375px) {
+  .product .item-flex {
+    position: absolute;
+  }
+}
+
+.product .item-reverse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 768px) {
+  .product .item-reverse {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.product .content-reverse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 375px) {
+  .product .content-reverse {
+    position: absolute;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product .img {
+    width: 410px;
+    height: 168px;
+  }
+}
+
+@media only screen and (max-width: 768px) and (max-width: 375px) {
+  .product .img {
+    width: 352px;
+    height: 134px;
+    position: relative;
+  }
+}
+
+.product .img-icon {
+  margin: 0 8px 0 24px;
+}
+
+@media only screen and (max-width: 768px) {
+  .product .img-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .img-icon {
+    color: #ffffff;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product .img-mr {
+    margin-right: 40px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .img-mr {
+    margin-right: 0;
+  }
+}
+
+.product .title {
+  font-size: 48px;
+  color: #650300;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+@media only screen and (max-width: 768px) {
+  .product .title {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product .title {
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .title {
+    margin-bottom: 16px;
+  }
+}
+
+.product .text {
+  font-size: 48px;
+  color: #aa0601;
+  margin-right: 24px;
+  line-height: normal;
+}
+
+@media only screen and (max-width: 768px) {
+  .product .text {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .text {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .text {
+    color: #ffffff;
+  }
 }
 /*# sourceMappingURL=all.css.map */
