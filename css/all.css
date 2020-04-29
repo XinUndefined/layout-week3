@@ -1,4 +1,3 @@
-@charset "UTF-8";
 *,
 *::before,
 *::after {
@@ -7,7 +6,7 @@
 }
 
 body {
-  font-family: 微軟正黑體, "Roboto", "Noto Sans TC", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
   font-size: 16px;
 }
@@ -65,7 +64,6 @@ h6 {
 }
 
 .header {
-  max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,12 +76,12 @@ h6 {
   background-color: #aa0601;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .header {
     position: relative;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -92,33 +90,38 @@ h6 {
   color: #ffffff;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .header .ham-icon {
     display: block;
-    margin: 0 124px 0 16px;
+    top: initial;
+    right: initial;
+    bottom: initial;
+    left: 5%;
+    position: absolute;
   }
 }
 
 .header .logo {
   width: 80px;
-  height: 48px;
+  height: 49px;
   background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/logo.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  display: block;
   text-indent: 101%;
   white-space: nowrap;
   overflow: hidden;
   margin-left: 88px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .header .logo {
     margin-left: 48px;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .header .logo {
     width: 48px;
     height: 30px;
@@ -126,7 +129,7 @@ h6 {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 10px 0;
+    margin: 10px;
   }
 }
 
@@ -144,14 +147,18 @@ h6 {
   padding: 40px 0;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .header .nav {
     margin-right: 48px;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .header .nav {
+    top: 100%;
+    right: initial;
+    bottom: initial;
+    left: initial;
     position: absolute;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -159,7 +166,6 @@ h6 {
             flex-direction: column;
     width: 100%;
     padding: 0px;
-    top: 100%;
     z-index: 1;
   }
 }
@@ -168,7 +174,7 @@ h6 {
   background-color: #aa0601;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .header .nav .list {
     width: 100%;
     -webkit-transform: translateX(-100%);
@@ -176,30 +182,31 @@ h6 {
     -webkit-transition: all 0.8s;
     transition: all 0.8s;
   }
-  .header .nav .list:hover {
-    background-color: #8f0400;
-  }
 }
 
-.header .nav .active {
+.header .nav .list .active {
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
 
-.header .nav .menu {
-  font-size: 20px;
+.header .nav .list .active:hover {
+  background-color: #8f0400;
+}
+
+.header .nav .list .menu {
+  font-size: 1.25rem;
   margin-left: 64px;
   color: #ffffff;
 }
 
-@media only screen and (max-width: 768px) {
-  .header .nav .menu {
+@media only screen and (max-width: 992px) {
+  .header .nav .list .menu {
     margin-left: 40px;
   }
 }
 
-@media only screen and (max-width: 375px) {
-  .header .nav .menu {
+@media only screen and (max-width: 576px) {
+  .header .nav .list .menu {
     margin-left: auto;
     text-align: center;
     border-top: 1px solid #ffffff;
@@ -209,6 +216,7 @@ h6 {
 
 .banner {
   position: relative;
+  width: initial;
   height: 840px;
   background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/banner.png");
   background-size: cover;
@@ -216,8 +224,10 @@ h6 {
   background-position: center;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .banner {
+    width: initial;
+    height: 840px;
     background-image: url("https://upload.cc/i1/2020/04/25/jH0crS.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -225,68 +235,64 @@ h6 {
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .banner {
+    width: initial;
+    height: 394px;
     background-image: url("https://upload.cc/i1/2020/04/25/Z0h7q1.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 394px;
   }
 }
 
 .banner .content {
-  position: absolute;
-  top: 50%;
+  top: 40%;
+  right: 18%;
   bottom: 50%;
-  left: 55%;
+  left: initial;
+  position: absolute;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 576px) {
   .banner .content {
-    left: 35%;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .banner .content {
-    top: 40%;
-    left: 20%;
+    right: 5%;
   }
 }
 
 .banner .content .text {
-  font-size: 36px;
+  font-size: 2.25rem;
   text-align: end;
   color: #650300;
+  font-weight: 600;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .banner .content .text {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .banner .content .text {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 .banner .content .title {
-  font-size: 64px;
+  font-size: 4rem;
   color: #650300;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .banner .content .title {
-    font-size: 48px;
+    font-size: 3rem;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .banner .content .title {
-    font-size: 32px;
+    font-size: 2rem;
   }
 }
 
@@ -295,70 +301,68 @@ h6 {
   margin-bottom: 64px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .column {
     margin-bottom: 40px;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .column {
     margin-bottom: 24px;
   }
 }
 
 .column .title {
-  font-size: 48px;
+  font-size: 3rem;
   color: #650300;
   text-align: center;
   padding: 64px 0;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .column .title {
-    font-size: 32px;
+    font-size: 2rem;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .column .title {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .column .title {
     padding: 40px 0 32px 0;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .column .title {
     padding: 32px 0;
   }
 }
 
 .column .list {
-  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   padding-bottom: 80px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .column .list {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    width: 66.66667%;
   }
   .column .list .order-1 {
     -webkit-box-ordinal-group: 2;
@@ -372,24 +376,40 @@ h6 {
   }
 }
 
+@media only screen and (max-width: 576px) {
+  .column .list {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .column .list .item {
-  max-width: 208px;
+  width: 18.18182%;
   text-align: center;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 992px) {
   .column .list .item {
+    width: 50%;
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .column .list .item {
+    width: 100%;
     margin-bottom: 28px;
   }
 }
 
 .column .list .item .img {
-  max-width: 100px;
+  width: 100px;
   height: 100px;
   margin-bottom: 40px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .column .list .item .img {
     width: 80px;
     height: 80px;
@@ -397,34 +417,68 @@ h6 {
   }
 }
 
-.column .list .item .list-title {
-  font-size: 24px;
+.column .list .item .item-title {
+  font-size: 1.5rem;
   color: #650300;
 }
 
-@media only screen and (max-width: 768px) {
-  .column .list .item .list-title {
-    font-size: 20px;
+@media only screen and (max-width: 992px) {
+  .column .list .item .item-title {
+    font-size: 1.25rem;
   }
 }
 
-@media only screen and (max-width: 375px) {
-  .column .list .item .list-title {
-    font-size: 20px;
+@media only screen and (max-width: 576px) {
+  .column .list .item .item-title {
+    font-size: 1.25rem;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .column .list .item .list-title {
+@media only screen and (max-width: 992px) {
+  .column .list .item .item-title {
     margin-bottom: 8px;
   }
 }
 
 .column .list .item .text {
-  text-align: start;
+  text-align: justify;
+  display: inline-block;
+  width: 208px;
+}
+
+.product .title {
+  font-size: 3rem;
+  color: #650300;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+@media only screen and (max-width: 992px) {
+  .product .title {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .product .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .product .title {
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .product .title {
+    margin-bottom: 16px;
+  }
 }
 
 .product .item {
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -437,14 +491,17 @@ h6 {
   margin-bottom: 24px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .product .item {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin-left: 48px;
     margin-bottom: 8px;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .product .item {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -453,19 +510,86 @@ h6 {
   }
 }
 
-.product .item-flex {
+@media only screen and (max-width: 992px) {
+  .product .item .img {
+    max-width: 411px;
+  }
+}
+
+@media only screen and (max-width: 992px) and (max-width: 576px) {
+  .product .item .img {
+    max-width: 352px;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .product .item .img-mr {
+    margin-right: 40px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .product .item .img-mr {
+    margin-right: 0;
+  }
+}
+
+.product .item .img-icon {
+  margin: 0 8px 0 24px;
+}
+
+@media only screen and (max-width: 992px) {
+  .product .item .img-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .product .item .img-icon {
+    color: #ffffff;
+    display: none;
+  }
+}
+
+.product .item .item-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-@media only screen and (max-width: 375px) {
-  .product .item-flex {
+@media only screen and (max-width: 576px) {
+  .product .item .item-content {
     position: absolute;
   }
 }
 
-.product .item-reverse {
+@media only screen and (max-width: 576px) {
+  .product .item .item-content .icon-sunglasses {
+    width: 32px;
+    height: 32px;
+    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 8px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .product .item .item-content .icon-optical {
+    width: 32px;
+    height: 25px;
+    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 8px;
+  }
+}
+
+.product .item .item-reverse {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -481,8 +605,11 @@ h6 {
           flex-direction: row-reverse;
 }
 
-@media only screen and (max-width: 768px) {
-  .product .item-reverse {
+@media only screen and (max-width: 992px) {
+  .product .item .item-reverse {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -490,154 +617,61 @@ h6 {
   }
 }
 
-.product .content-reverse {
+.product .item .item-reverse .content-reverse {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
 }
 
-@media only screen and (max-width: 375px) {
-  .product .content-reverse {
+@media only screen and (max-width: 576px) {
+  .product .item .item-reverse .content-reverse {
     position: absolute;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .product .img {
-    width: 410px;
-    height: 168px;
-  }
-}
-
-@media only screen and (max-width: 768px) and (max-width: 375px) {
-  .product .img {
-    width: 352px;
-    height: 134px;
-    position: relative;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .product .icon-sunglasses {
-    width: 32px;
-    height: 32px;
-    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0 8px 0 70px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .product .icon-optical {
-    width: 32px;
-    height: 25px;
-    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 8px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .product .icon-functional {
+@media only screen and (max-width: 576px) {
+  .product .item .item-reverse .content-reverse .icon-functional {
     width: 23px;
     height: 32px;
     background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 5px 8px 0 0;
-  }
-}
-
-.product .img-icon {
-  margin: 0 8px 0 24px;
-}
-
-@media only screen and (max-width: 768px) {
-  .product .img-icon {
-    width: 32px;
-    height: 32px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .product .img-icon {
-    color: #ffffff;
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .product .img-mr {
-    margin-right: 40px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .product .img-mr {
-    margin-right: 0;
-  }
-}
-
-.product .title {
-  font-size: 48px;
-  color: #650300;
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-@media only screen and (max-width: 768px) {
-  .product .title {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .product .title {
-    font-size: 24px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .product .title {
-    margin-bottom: 32px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .product .title {
-    margin-bottom: 16px;
+    margin: 5px 8px;
   }
 }
 
 .product .text {
-  font-size: 48px;
+  font-size: 3rem;
   color: #aa0601;
   margin-right: 24px;
   line-height: normal;
+  display: block;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .product .text {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .product .text {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 576px) {
   .product .text {
     color: #ffffff;
   }

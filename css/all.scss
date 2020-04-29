@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 微軟正黑體, "Roboto", "Noto Sans TC", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
   font-size: 16px;
 }
@@ -30,50 +31,51 @@ $text-primary: #650300;
 $bg-primary: #aa06010d;
 $base-primary: #aa0601;
 $base-secondary: #ffffff;
+$font-base: 1rem;
 $font-h2: (
-  pc: 72px,
-  pad: 32px,
-  mobile: 32px,
+  pc: $font-base * 4.5,
+  pad: $font-base * 2,
+  mobile: $font-base * 2,
 );
 $font-h3: (
-  pc: 64px,
-  pad: 48px,
-  mobile: 32px,
+  pc: $font-base * 4,
+  pad: $font-base * 3,
+  mobile: $font-base * 2,
 );
 $font-h4: (
-  pc: 48px,
-  pad: 32px,
-  mobile: 24px,
+  pc: $font-base * 3,
+  pad: $font-base * 2,
+  mobile: $font-base * 1.5,
 );
 $font-h5: (
-  pc: 48px,
-  pad: 28px,
-  mobile: 28px,
+  pc: $font-base * 3,
+  pad: $font-base * 1.75,
+  mobile: $font-base * 1.75,
 );
 $font-h6: (
-  pc: 24px,
-  pad: 20px,
-  mobile: 20px,
+  pc: $font-base * 1.5,
+  pad: $font-base * 1.25,
+  mobile: $font-base * 1.25,
 );
 $font-p1: (
-  pc: 36px,
-  pad: 20px,
-  mobile: 16px,
+  pc: $font-base * 2.25,
+  pad: $font-base * 1.25,
+  mobile: $font-base,
 );
 $font-p2: (
-  pc: 20px,
-  pad: 16px,
-  mobile: 16px,
+  pc: $font-base * 1.25,
+  pad: $font-base,
+  mobile: $font-base,
 );
-$font-p3: 20px;
-$font-p4: 14px;
+$font-p3: $font-base * 1.25;
+$font-p4: $font-base * 0.875;
 @mixin breakpoint($point) {
   @if ($point == pad) {
-    @media only screen and (max-width: 768px) {
+    @media only screen and(max-width: 992px) {
       @content;
     }
   } @else if ($point == mobile) {
-    @media only screen and (max-width: 375px) {
+    @media only screen and(max-width: 576px) {
       @content;
     }
   }
@@ -144,16 +146,36 @@ $font-p4: 14px;
     font-size: $font-p4;
   }
 }
-@mixin flex-base($justify-content, $align-items) {
+@mixin flex-base($justify-content: start, $align-items: start) {
   display: flex;
   justify-content: $justify-content;
   align-items: $align-items;
 }
-@mixin bg($img) {
+@mixin bg($img, $width: initial, $height: initial) {
+  width: $width;
+  height: $height;
   background-image: url($img);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+@mixin absolute(
+  $top: initial,
+  $right: initial,
+  $bottom: initial,
+  $left: initial
+) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+}
+@mixin hide-text {
+  display: block;
+  text-indent: 101%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @function col-width($col) {
   @return 100% / $col;
@@ -168,41 +190,37 @@ $font-p4: 14px;
   max-width: 1200px;
   margin: 0 auto;
 }
+
 //header
 .header {
-  max-width: 100%;
   @include flex-base(space-between, center);
   background-color: $base-primary;
   @include breakpoint(mobile) {
     position: relative;
-    justify-content: start;
+    justify-content: center;
   }
   .ham-icon {
     display: none;
     color: $base-secondary;
     @include breakpoint(mobile) {
       display: block;
-      margin: 0 124px 0 16px;
+      @include absolute(initial, initial, initial, 5%);
     }
   }
   .logo {
-    width: 80px;
-    height: 48px;
     @include bg(
-      "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/logo.png"
+      "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/logo.png",
+      80px,
+      49px
     );
-    text-indent: 101%;
-    white-space: nowrap;
-    overflow: hidden;
+    @include hide-text();
     margin-left: 88px;
     @include breakpoint(pad) {
       margin-left: 48px;
     }
     @include breakpoint(mobile) {
-      width: 48px;
-      height: 30px;
-      @include bg("https://upload.cc/i1/2020/04/25/qNFjUf.png");
-      margin: 10px 0;
+      @include bg("https://upload.cc/i1/2020/04/25/qNFjUf.png", 48px, 30px);
+      margin: 10px;
     }
   }
   .nav {
@@ -213,39 +231,38 @@ $font-p4: 14px;
       margin-right: 48px;
     }
     @include breakpoint(mobile) {
-      position: absolute;
+      @include absolute(100%);
       flex-direction: column;
-      width: 100%;
+      width: col-width(1);
       padding: 0px;
-      top: 100%;
       z-index: 1;
     }
     .list {
       background-color: $base-primary;
       @include breakpoint(mobile) {
-        width: 100%;
+        width: col-width(1);
         transform: translateX(-100%);
         transition: all 0.8s;
+      }
+      .active {
+        transform: translateX(0);
         &:hover {
           background-color: #8f0400;
         }
       }
-    }
-    .active {
-      transform: translateX(0);
-    }
-    .menu {
-      @include font-p(p3);
-      margin-left: 64px;
-      color: $base-secondary;
-      @include breakpoint(pad) {
-        margin-left: 40px;
-      }
-      @include breakpoint(mobile) {
-        margin-left: auto;
-        text-align: center;
-        border-top: 1px solid $base-secondary;
-        padding: 16px 0;
+      .menu {
+        @include font-p(p3);
+        margin-left: 64px;
+        color: $base-secondary;
+        @include breakpoint(pad) {
+          margin-left: 40px;
+        }
+        @include breakpoint(mobile) {
+          margin-left: auto;
+          text-align: center;
+          border-top: 1px solid $base-secondary;
+          padding: 16px 0;
+        }
       }
     }
   }
@@ -254,33 +271,27 @@ $font-p4: 14px;
 //banner
 .banner {
   position: relative;
-  height: 840px;
   @include bg(
-    "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/banner.png"
+    "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/banner.png",
+    initial,
+    840px
   );
   @include breakpoint(pad) {
-    @include bg("https://upload.cc/i1/2020/04/25/jH0crS.png");
+    @include bg("https://upload.cc/i1/2020/04/25/jH0crS.png", initial, 840px);
   }
   @include breakpoint(mobile) {
-    @include bg("https://upload.cc/i1/2020/04/25/Z0h7q1.png");
-    height: 394px;
+    @include bg("https://upload.cc/i1/2020/04/25/Z0h7q1.png", initial, 394px);
   }
   .content {
-    position: absolute;
-    top: 50%;
-    bottom: 50%;
-    left: 55%;
-    @include breakpoint(pad) {
-      left: 35%;
-    }
+    @include absolute(40%, 18%, 50%);
     @include breakpoint(mobile) {
-      top: 40%;
-      left: 20%;
+      right: 5%;
     }
     .text {
       @include font-p(p1);
       text-align: end;
       color: $text-primary;
+      font-weight: 600;
     }
     .title {
       @include font-h(h3);
@@ -312,13 +323,11 @@ $font-p4: 14px;
   }
   .list {
     @extend %content-width;
-    margin: 0 auto;
-    @include flex-base(space-around, center);
+    @include flex-base(space-around);
     padding-bottom: 80px;
     @include breakpoint(pad) {
       flex-wrap: wrap;
       justify-content: space-between;
-      width: col-width(1.5);
       .order-1 {
         order: 1;
       }
@@ -326,14 +335,22 @@ $font-p4: 14px;
         order: 2;
       }
     }
+    @include breakpoint(mobile) {
+      justify-content: center;
+    }
     .item {
-      max-width: 208px;
+      width: col-width(5.5);
       text-align: center;
+      @include breakpoint(pad) {
+        width: col-width(2);
+        margin-bottom: 40px;
+      }
       @include breakpoint(mobile) {
+        width: col-width(1);
         margin-bottom: 28px;
       }
       .img {
-        max-width: 100px;
+        width: 100px;
         height: 100px;
         margin-bottom: 40px;
         @include breakpoint(pad) {
@@ -342,7 +359,7 @@ $font-p4: 14px;
           margin-bottom: 16px;
         }
       }
-      .list-title {
+      .item-title {
         @include font-h(h6);
         color: $text-primary;
         @include breakpoint(pad) {
@@ -350,106 +367,16 @@ $font-p4: 14px;
         }
       }
       .text {
-        text-align: start;
+        text-align: justify;
+        display: inline-block;
+        width: 208px;
       }
     }
   }
 }
-
+//product
 .product {
   @extend %content-width;
-  .item {
-    @include flex-base(start, center);
-    margin-bottom: 24px;
-    @include breakpoint(pad) {
-      margin-left: 48px;
-      margin-bottom: 8px;
-    }
-    @include breakpoint(mobile) {
-      justify-content: center;
-      margin-left: 0;
-    }
-  }
-  .item-flex {
-    display: flex;
-    @include breakpoint(mobile) {
-      position: absolute;
-    }
-  }
-  .item-reverse {
-    @include flex-base(start, center);
-    flex-direction: row-reverse;
-    @include breakpoint(pad) {
-      flex-direction: row;
-    }
-  }
-  .content-reverse {
-    display: flex;
-    flex-direction: row-reverse;
-    @include breakpoint(mobile) {
-      position: absolute;
-    }
-  }
-  .img {
-    @include breakpoint(pad) {
-      width: 410px;
-      height: 168px;
-      @include breakpoint(mobile) {
-        width: 352px;
-        height: 134px;
-        position: relative;
-      }
-    }
-  }
-  .icon-sunglasses {
-    @include breakpoint(mobile) {
-      width: 32px;
-      height: 32px;
-      @include bg(
-        "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg"
-      );
-      margin: 0 8px 0 70px;
-    }
-  }
-  .icon-optical {
-    @include breakpoint(mobile) {
-      width: 32px;
-      height: 25px;
-      @include bg(
-        "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg"
-      );
-      margin: 8px;
-    }
-  }
-  .icon-functional {
-    @include breakpoint(mobile) {
-      width: 23px;
-      height: 32px;
-      @include bg(
-        "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg"
-      );
-      margin: 5px 8px 0 0;
-    }
-  }
-  .img-icon {
-    margin: 0 8px 0 24px;
-    @include breakpoint(pad) {
-      width: 32px;
-      height: 32px;
-    }
-    @include breakpoint(mobile) {
-      color: $base-secondary;
-      display: none;
-    }
-  }
-  .img-mr {
-    @include breakpoint(pad) {
-      margin-right: 40px;
-    }
-    @include breakpoint(mobile) {
-      margin-right: 0;
-    }
-  }
   .title {
     @include font-h(h4);
     color: $text-primary;
@@ -462,11 +389,105 @@ $font-p4: 14px;
       margin-bottom: 16px;
     }
   }
+  .item {
+    overflow: hidden;
+    @include flex-base(start, center);
+    margin-bottom: 24px;
+    @include breakpoint(pad) {
+      justify-content: center;
+      margin-left: 48px;
+      margin-bottom: 8px;
+    }
+    @include breakpoint(mobile) {
+      justify-content: center;
+      margin-left: 0;
+    }
+    .img {
+      @include breakpoint(pad) {
+        max-width: 411px;
+        @include breakpoint(mobile) {
+          max-width: 352px;
+          position: relative;
+        }
+      }
+    }
+    .img-mr {
+      @include breakpoint(pad) {
+        margin-right: 40px;
+      }
+      @include breakpoint(mobile) {
+        margin-right: 0;
+      }
+    }
+    .img-icon {
+      margin: 0 8px 0 24px;
+      @include breakpoint(pad) {
+        width: 32px;
+        height: 32px;
+      }
+      @include breakpoint(mobile) {
+        color: $base-secondary;
+        display: none;
+      }
+    }
+    .item-content {
+      display: flex;
+      @include breakpoint(mobile) {
+        position: absolute;
+      }
+      .icon-sunglasses {
+        @include breakpoint(mobile) {
+          @include bg(
+            "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg",
+            32px,
+            32px
+          );
+          margin: 8px;
+        }
+      }
+      .icon-optical {
+        @include breakpoint(mobile) {
+          @include bg(
+            "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg",
+            32px,
+            25px
+          );
+          margin: 8px;
+        }
+      }
+    }
+    .item-reverse {
+      @include flex-base(start, center);
+      flex-direction: row-reverse;
+      @include breakpoint(pad) {
+        justify-content: center;
+        flex-direction: row;
+      }
+      .content-reverse {
+        @include flex-base(start, center);
+        flex-direction: row-reverse;
+        @include breakpoint(mobile) {
+          position: absolute;
+        }
+        .icon-functional {
+          @include breakpoint(mobile) {
+            @include bg(
+              "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg",
+              23px,
+              32px
+            );
+            margin: 5px 8px;
+          }
+        }
+      }
+    }
+  }
   .text {
     @include font-h(h5);
     color: $base-primary;
     margin-right: 24px;
     line-height: normal;
+    display: block;
     @include breakpoint(mobile) {
       color: $base-secondary;
     }
