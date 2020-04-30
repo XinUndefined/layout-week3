@@ -3,7 +3,8 @@
 *::after {
   box-sizing: border-box;
 }
-body {
+body,
+html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
@@ -24,6 +25,7 @@ h4,
 h5,
 h6 {
   font-weight: bold;
+  line-height: 1.2;
 }
 $base-margin: 8px;
 $margin-level: 7;
