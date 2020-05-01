@@ -33,44 +33,43 @@ $text-primary: #650300;
 $bg-primary: #aa06010d;
 $base-primary: #aa0601;
 $base-secondary: #ffffff;
-$font-base: 1rem;
 $font-h2: (
-  pc: $font-base * 4.5,
-  pad: $font-base * 2,
-  mobile: $font-base * 2,
+  pc: 72px,
+  pad: 32px,
+  mobile: 32px,
 );
 $font-h3: (
-  pc: $font-base * 4,
-  pad: $font-base * 3,
-  mobile: $font-base * 2,
+  pc: 64px,
+  pad: 48px,
+  mobile: 32px,
 );
 $font-h4: (
-  pc: $font-base * 3,
-  pad: $font-base * 2,
-  mobile: $font-base * 1.5,
+  pc: 48px,
+  pad: 32px,
+  mobile: 24px,
 );
 $font-h5: (
-  pc: $font-base * 3,
-  pad: $font-base * 1.75,
-  mobile: $font-base * 1.75,
+  pc: 48px,
+  pad: 28px,
+  mobile: 28px,
 );
 $font-h6: (
-  pc: $font-base * 1.5,
-  pad: $font-base * 1.25,
-  mobile: $font-base * 1.25,
+  pc: 24px,
+  pad: 20px,
+  mobile: 20px,
 );
 $font-p1: (
-  pc: $font-base * 2.25,
-  pad: $font-base * 1.25,
-  mobile: $font-base,
+  pc: 36px,
+  pad: 20px,
+  mobile: 16px,
 );
 $font-p2: (
-  pc: $font-base * 1.25,
-  pad: $font-base,
-  mobile: $font-base,
+  pc: 20px,
+  pad: 16px,
+  mobile: 16px,
 );
-$font-p3: $font-base * 1.25;
-$font-p4: $font-base * 0.875;
+$font-p3: 20px;
+$font-p4: 14px;
 @mixin breakpoint($point) {
   @if ($point == pad) {
     @media only screen and(max-width: 992px) {
@@ -179,10 +178,6 @@ $font-p4: $font-base * 0.875;
   white-space: nowrap;
   overflow: hidden;
 }
-@function col-width($col) {
-  @return 100% / $col;
-}
-
 @for $i from 1 through $margin-level {
   .mbLevel-#{$i} {
     margin-bottom: ($i * $base-margin);
@@ -235,22 +230,16 @@ $font-p4: $font-base * 0.875;
     @include breakpoint(mobile) {
       @include absolute(100%);
       flex-direction: column;
-      width: col-width(1);
+      width: 100%;
       padding: 0px;
       z-index: 1;
     }
     .list {
       background-color: $base-primary;
       @include breakpoint(mobile) {
-        width: col-width(1);
+        width: 100%;
         transform: translateX(-100%);
         transition: all 0.8s;
-      }
-      .active {
-        transform: translateX(0);
-        &:hover {
-          background-color: #8f0400;
-        }
       }
       .menu {
         @include font-p(p3);
@@ -265,6 +254,12 @@ $font-p4: $font-base * 0.875;
           border-top: 1px solid $base-secondary;
           padding: 16px 0;
         }
+      }
+    }
+    .active {
+      transform: translateX(0);
+      &:hover {
+        background-color: #8f0400;
       }
     }
   }
@@ -341,14 +336,13 @@ $font-p4: $font-base * 0.875;
       justify-content: center;
     }
     .item {
-      width: col-width(5.5);
       text-align: center;
       @include breakpoint(pad) {
-        width: col-width(2);
+        width: 50%;
         margin-bottom: 40px;
       }
       @include breakpoint(mobile) {
-        width: col-width(1);
+        width: 100%;
         margin-bottom: 28px;
       }
       .img {
@@ -376,9 +370,10 @@ $font-p4: $font-base * 0.875;
     }
   }
 }
-//product
-.product {
+//classic
+.classic {
   @extend %content-width;
+  margin-bottom: 80px;
   .title {
     @include font-h(h4);
     color: $text-primary;
@@ -392,33 +387,24 @@ $font-p4: $font-base * 0.875;
     }
   }
   .item {
-    overflow: hidden;
     @include flex-base(start, center);
     margin-bottom: 24px;
     @include breakpoint(pad) {
       justify-content: center;
-      margin-left: 48px;
       margin-bottom: 8px;
     }
     @include breakpoint(mobile) {
       justify-content: center;
-      margin-left: 0;
+      margin: 0 12px;
     }
     .img {
+      width: 60%;
       @include breakpoint(pad) {
-        max-width: 411px;
+        width: 50%;
         @include breakpoint(mobile) {
-          max-width: 352px;
+          width: 100%;
           position: relative;
         }
-      }
-    }
-    .img-mr {
-      @include breakpoint(pad) {
-        margin-right: 40px;
-      }
-      @include breakpoint(mobile) {
-        margin-right: 0;
       }
     }
     .img-icon {
@@ -433,8 +419,50 @@ $font-p4: $font-base * 0.875;
       }
     }
     .item-content {
+      width: 30%;
       display: flex;
       @include breakpoint(mobile) {
+        width: 100%;
+        justify-content: center;
+        position: absolute;
+      }
+    }
+    .icon-optical {
+      @include breakpoint(mobile) {
+        @include bg(
+          "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg",
+          32px,
+          25px
+        );
+        margin: 8px;
+      }
+    }
+    .icon-functional {
+      @include breakpoint(mobile) {
+        @include bg(
+          "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg",
+          23px,
+          32px
+        );
+        margin: 5px 8px;
+      }
+    }
+  }
+  .item-reverse {
+    @include flex-base(start, center);
+    flex-direction: row-reverse;
+    @include breakpoint(pad) {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .content-reverse {
+      width: 30%;
+      @include flex-base(start, center);
+      flex-direction: row-reverse;
+
+      @include breakpoint(mobile) {
+        width: 100%;
+        justify-content: center;
         position: absolute;
       }
       .icon-sunglasses {
@@ -447,41 +475,6 @@ $font-p4: $font-base * 0.875;
           margin: 8px;
         }
       }
-      .icon-optical {
-        @include breakpoint(mobile) {
-          @include bg(
-            "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg",
-            32px,
-            25px
-          );
-          margin: 8px;
-        }
-      }
-    }
-    .item-reverse {
-      @include flex-base(start, center);
-      flex-direction: row-reverse;
-      @include breakpoint(pad) {
-        justify-content: center;
-        flex-direction: row;
-      }
-      .content-reverse {
-        @include flex-base(start, center);
-        flex-direction: row-reverse;
-        @include breakpoint(mobile) {
-          position: absolute;
-        }
-        .icon-functional {
-          @include breakpoint(mobile) {
-            @include bg(
-              "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg",
-              23px,
-              32px
-            );
-            margin: 5px 8px;
-          }
-        }
-      }
     }
   }
   .text {
@@ -492,6 +485,75 @@ $font-p4: $font-base * 0.875;
     display: block;
     @include breakpoint(mobile) {
       color: $base-secondary;
+    }
+  }
+}
+.joint {
+  @include bg(
+    "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/bg.png",
+    initial,
+    2162px
+  );
+  .joint-title {
+    @include font-h(h4);
+    color: $base-secondary;
+    text-align: center;
+    padding: 64px 0 60px 0;
+    @include breakpoint(pad) {
+      padding: 40px 0 32px 0;
+    }
+    @include breakpoint(mobile) {
+      padding: 24px 0 16px 0;
+    }
+  }
+  .img-main {
+    display: flex;
+    justify-content: center;
+    margin: 0 48px 60px;
+    @include breakpoint(mobile) {
+      margin: 0 24px;
+    }
+    .img-right {
+      margin-left: 8px;
+      .img-bottom {
+        display: flex;
+        .btn {
+          padding: 0px 84px 0px 32px;
+          background-color: $base-secondary;
+          max-width: 315px;
+          a {
+            @include font-h(h2);
+            color: $base-primary;
+          }
+        }
+      }
+    }
+  }
+  .module {
+    @extend %content-width;
+    display: flex;
+    .module-title {
+      @include font-h(h2);
+      color: $base-primary;
+    }
+    .img-dobule {
+      @include bg(
+        "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/product-8.png",
+        585px,
+        592px
+      );
+      @include flex-base(center, center);
+    }
+    .img-youth {
+      @include bg(
+        "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/product-9.png",
+        585px,
+        592px
+      );
+      @include flex-base(center, center);
+    }
+    .img-mr {
+      margin-right: 30px;
     }
   }
 }

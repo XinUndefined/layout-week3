@@ -60,7 +60,7 @@ h6 {
   margin-bottom: 56px;
 }
 
-.column .list, .product {
+.column .list, .classic, .joint .module {
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -186,17 +186,8 @@ h6 {
   }
 }
 
-.header .nav .list .active {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
-}
-
-.header .nav .list .active:hover {
-  background-color: #8f0400;
-}
-
 .header .nav .list .menu {
-  font-size: 1.25rem;
+  font-size: 20px;
   margin-left: 64px;
   color: #ffffff;
 }
@@ -214,6 +205,15 @@ h6 {
     border-top: 1px solid #ffffff;
     padding: 16px 0;
   }
+}
+
+.header .nav .active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.header .nav .active:hover {
+  background-color: #8f0400;
 }
 
 .banner {
@@ -263,7 +263,7 @@ h6 {
 }
 
 .banner .content .text {
-  font-size: 2.25rem;
+  font-size: 36px;
   text-align: end;
   color: #650300;
   font-weight: 600;
@@ -271,30 +271,30 @@ h6 {
 
 @media only screen and (max-width: 992px) {
   .banner .content .text {
-    font-size: 1.25rem;
+    font-size: 20px;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .banner .content .text {
-    font-size: 1rem;
+    font-size: 16px;
   }
 }
 
 .banner .content .title {
-  font-size: 4rem;
+  font-size: 64px;
   color: #650300;
 }
 
 @media only screen and (max-width: 992px) {
   .banner .content .title {
-    font-size: 3rem;
+    font-size: 48px;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .banner .content .title {
-    font-size: 2rem;
+    font-size: 32px;
   }
 }
 
@@ -316,7 +316,7 @@ h6 {
 }
 
 .column .title {
-  font-size: 3rem;
+  font-size: 48px;
   color: #650300;
   text-align: center;
   padding: 64px 0;
@@ -324,13 +324,13 @@ h6 {
 
 @media only screen and (max-width: 992px) {
   .column .title {
-    font-size: 2rem;
+    font-size: 32px;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .column .title {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
 }
 
@@ -387,7 +387,6 @@ h6 {
 }
 
 .column .list .item {
-  width: 18.18182%;
   text-align: center;
 }
 
@@ -420,19 +419,19 @@ h6 {
 }
 
 .column .list .item .item-title {
-  font-size: 1.5rem;
+  font-size: 24px;
   color: #650300;
 }
 
 @media only screen and (max-width: 992px) {
   .column .list .item .item-title {
-    font-size: 1.25rem;
+    font-size: 20px;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .column .list .item .item-title {
-    font-size: 1.25rem;
+    font-size: 20px;
   }
 }
 
@@ -448,39 +447,42 @@ h6 {
   width: 208px;
 }
 
-.product .title {
-  font-size: 3rem;
+.classic {
+  margin-bottom: 80px;
+}
+
+.classic .title {
+  font-size: 48px;
   color: #650300;
   text-align: center;
   margin-bottom: 60px;
 }
 
 @media only screen and (max-width: 992px) {
-  .product .title {
-    font-size: 2rem;
+  .classic .title {
+    font-size: 32px;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .product .title {
-    font-size: 1.5rem;
+  .classic .title {
+    font-size: 24px;
   }
 }
 
 @media only screen and (max-width: 992px) {
-  .product .title {
+  .classic .title {
     margin-bottom: 32px;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .product .title {
+  .classic .title {
     margin-bottom: 16px;
   }
 }
 
-.product .item {
-  overflow: hidden;
+.classic .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -494,93 +496,77 @@ h6 {
 }
 
 @media only screen and (max-width: 992px) {
-  .product .item {
+  .classic .item {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-left: 48px;
     margin-bottom: 8px;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .product .item {
+  .classic .item {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-left: 0;
+    margin: 0 12px;
   }
 }
 
+.classic .item .img {
+  width: 60%;
+}
+
 @media only screen and (max-width: 992px) {
-  .product .item .img {
-    max-width: 411px;
+  .classic .item .img {
+    width: 50%;
   }
 }
 
 @media only screen and (max-width: 992px) and (max-width: 576px) {
-  .product .item .img {
-    max-width: 352px;
+  .classic .item .img {
+    width: 100%;
     position: relative;
   }
 }
 
-@media only screen and (max-width: 992px) {
-  .product .item .img-mr {
-    margin-right: 40px;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .product .item .img-mr {
-    margin-right: 0;
-  }
-}
-
-.product .item .img-icon {
+.classic .item .img-icon {
   margin: 0 8px 0 24px;
 }
 
 @media only screen and (max-width: 992px) {
-  .product .item .img-icon {
+  .classic .item .img-icon {
     width: 32px;
     height: 32px;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .product .item .img-icon {
+  .classic .item .img-icon {
     color: #ffffff;
     display: none;
   }
 }
 
-.product .item .item-content {
+.classic .item .item-content {
+  width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 @media only screen and (max-width: 576px) {
-  .product .item .item-content {
+  .classic .item .item-content {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     position: absolute;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .product .item .item-content .icon-sunglasses {
-    width: 32px;
-    height: 32px;
-    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 8px;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .product .item .item-content .icon-optical {
+  .classic .item .icon-optical {
     width: 32px;
     height: 25px;
     background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg");
@@ -591,58 +577,8 @@ h6 {
   }
 }
 
-.product .item .item-reverse {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
-@media only screen and (max-width: 992px) {
-  .product .item .item-reverse {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-  }
-}
-
-.product .item .item-reverse .content-reverse {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
 @media only screen and (max-width: 576px) {
-  .product .item .item-reverse .content-reverse {
-    position: absolute;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .product .item .item-reverse .content-reverse .icon-functional {
+  .classic .item .icon-functional {
     width: 23px;
     height: 32px;
     background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg");
@@ -653,8 +589,75 @@ h6 {
   }
 }
 
-.product .text {
-  font-size: 3rem;
+.classic .item-reverse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 992px) {
+  .classic .item-reverse {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.classic .item-reverse .content-reverse {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 576px) {
+  .classic .item-reverse .content-reverse {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: absolute;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .classic .item-reverse .content-reverse .icon-sunglasses {
+    width: 32px;
+    height: 32px;
+    background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 8px;
+  }
+}
+
+.classic .text {
+  font-size: 48px;
   color: #aa0601;
   margin-right: 24px;
   line-height: normal;
@@ -662,20 +665,172 @@ h6 {
 }
 
 @media only screen and (max-width: 992px) {
-  .product .text {
-    font-size: 1.75rem;
+  .classic .text {
+    font-size: 28px;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .product .text {
-    font-size: 1.75rem;
+  .classic .text {
+    font-size: 28px;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .product .text {
+  .classic .text {
     color: #ffffff;
   }
+}
+
+.joint {
+  width: initial;
+  height: 2162px;
+  background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.joint .joint-title {
+  font-size: 48px;
+  color: #ffffff;
+  text-align: center;
+  padding: 64px 0 60px 0;
+}
+
+@media only screen and (max-width: 992px) {
+  .joint .joint-title {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .joint .joint-title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .joint .joint-title {
+    padding: 40px 0 32px 0;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .joint .joint-title {
+    padding: 24px 0 16px 0;
+  }
+}
+
+.joint .img-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 48px 60px;
+}
+
+@media only screen and (max-width: 576px) {
+  .joint .img-main {
+    margin: 0 24px;
+  }
+}
+
+.joint .img-main .img-right {
+  margin-left: 8px;
+}
+
+.joint .img-main .img-right .img-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.joint .img-main .img-right .img-bottom .btn {
+  padding: 0px 84px 0px 32px;
+  background-color: #ffffff;
+  max-width: 315px;
+}
+
+.joint .img-main .img-right .img-bottom .btn a {
+  font-size: 72px;
+  color: #aa0601;
+}
+
+@media only screen and (max-width: 992px) {
+  .joint .img-main .img-right .img-bottom .btn a {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .joint .img-main .img-right .img-bottom .btn a {
+    font-size: 32px;
+  }
+}
+
+.joint .module {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.joint .module .module-title {
+  font-size: 72px;
+  color: #aa0601;
+}
+
+@media only screen and (max-width: 992px) {
+  .joint .module .module-title {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .joint .module .module-title {
+    font-size: 32px;
+  }
+}
+
+.joint .module .img-dobule {
+  width: 585px;
+  height: 592px;
+  background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/product-8.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.joint .module .img-youth {
+  width: 585px;
+  height: 592px;
+  background-image: url("https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/product-9.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.joint .module .img-mr {
+  margin-right: 30px;
 }
 /*# sourceMappingURL=all.css.map */
