@@ -1,0 +1,75 @@
+.header {
+  @include flex-base(space-between, center);
+  background-color: $base-primary;
+  @include breakpoint(mobile) {
+    position: relative;
+    justify-content: center;
+  }
+  .ham-icon {
+    display: none;
+    color: $base-secondary;
+    @include breakpoint(mobile) {
+      display: block;
+      @include absolute(initial, initial, initial, 5%);
+    }
+  }
+  .logo {
+    @include bg(
+      "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/logo.png",
+      80px,
+      49px
+    );
+    @include hide-text();
+    margin-left: 88px;
+    @include breakpoint(pad) {
+      margin-left: 48px;
+    }
+    @include breakpoint(mobile) {
+      @include bg("https://upload.cc/i1/2020/04/25/qNFjUf.png", 48px, 30px);
+      margin: 10px;
+    }
+  }
+  .nav {
+    @include flex-base(center, center);
+    margin-right: 88px;
+    padding: 40px 0;
+    @include breakpoint(pad) {
+      margin-right: 48px;
+    }
+    @include breakpoint(mobile) {
+      @include absolute(100%);
+      flex-direction: column;
+      width: 100%;
+      padding: 0px;
+      z-index: 1;
+    }
+    .list {
+      background-color: $base-primary;
+      @include breakpoint(mobile) {
+        width: 100%;
+        transform: translateX(-100%);
+        transition: all 0.8s;
+      }
+      .menu {
+        @include font-p(p3);
+        margin-left: 64px;
+        color: $base-secondary;
+        @include breakpoint(pad) {
+          margin-left: 40px;
+        }
+        @include breakpoint(mobile) {
+          margin-left: auto;
+          text-align: center;
+          border-top: 1px solid $base-secondary;
+          padding: 16px 0;
+        }
+      }
+    }
+    .active {
+      transform: translateX(0);
+      &:hover {
+        background-color: #8f0400;
+      }
+    }
+  }
+}

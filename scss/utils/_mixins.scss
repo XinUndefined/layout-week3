@@ -1,0 +1,108 @@
+@mixin breakpoint($point) {
+  @if ($point == pad) {
+    @media only screen and(max-width: 992px) {
+      @content;
+    }
+  } @else if ($point == mobile) {
+    @media only screen and(max-width: 576px) {
+      @content;
+    }
+  }
+}
+@mixin font-h($size) {
+  @if ($size == h2) {
+    font-size: map-get($font-h2, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h2, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h2, mobile);
+    }
+  } @else if ($size == h3) {
+    font-size: map-get($font-h3, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h3, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h3, mobile);
+    }
+  } @else if ($size == h4) {
+    font-size: map-get($font-h4, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h4, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h4, mobile);
+    }
+  } @else if ($size == h5) {
+    font-size: map-get($font-h5, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h5, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h5, mobile);
+    }
+  } @else if ($size == h6) {
+    font-size: map-get($font-h6, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-h6, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-h6, mobile);
+    }
+  }
+}
+@mixin font-p($size) {
+  @if ($size == p1) {
+    font-size: map-get($font-p1, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-p1, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-p1, mobile);
+    }
+  } @else if ($size == p2) {
+    font-size: map-get($font-p2, pc);
+    @include breakpoint(pad) {
+      font-size: map-get($font-p2, pad);
+    }
+    @include breakpoint(mobile) {
+      font-size: map-get($font-p2, mobile);
+    }
+  } @else if ($size == p3) {
+    font-size: $font-p3;
+  } @else if ($size == p4) {
+    font-size: $font-p4;
+  }
+}
+@mixin flex-base($justify-content: start, $align-items: start) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+@mixin bg($img, $width: initial, $height: initial) {
+  width: $width;
+  height: $height;
+  background-image: url($img);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@mixin absolute(
+  $top: initial,
+  $right: initial,
+  $bottom: initial,
+  $left: initial
+) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+}
+@mixin hide-text {
+  display: block;
+  text-indent: 101%;
+  white-space: nowrap;
+  overflow: hidden;
+}
