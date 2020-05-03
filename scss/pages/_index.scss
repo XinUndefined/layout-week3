@@ -221,12 +221,17 @@
     }
   }
 }
+
+//joint
 .joint {
   @include bg(
     "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/bg.png",
     initial,
-    2162px
+    2100px
   );
+  @include breakpoint(pad) {
+    height: 1221px;
+  }
   .joint-title {
     @include font-h(h4);
     color: $base-secondary;
@@ -243,17 +248,20 @@
     display: flex;
     justify-content: center;
     margin: 0 48px 60px;
+    @include breakpoint(pad) {
+      margin-bottom: 40px;
+    }
     @include breakpoint(mobile) {
-      margin: 0 24px;
+      margin: 0 24px 20px;
     }
     .img-right {
       margin-left: 8px;
       .img-bottom {
         display: flex;
         .btn {
-          padding: 0px 84px 0px 32px;
-          background-color: $base-secondary;
-          max-width: 315px;
+          // padding: 0px 84px 0px 32px;
+          // background-color: $base-secondary;
+          // max-width: 315px;
           a {
             @include font-h(h2);
             color: $base-primary;
@@ -265,9 +273,23 @@
   .module {
     @extend %content-width;
     display: flex;
+    margin-bottom: 144px;
+    @include breakpoint(pad) {
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    @include breakpoint(mobile) {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
     .module-title {
       @include font-h(h2);
+      @include flex-base(center, center);
       color: $base-primary;
+      background-color: hsla(0, 0%, 100%, 0.5);
+      width: 100%;
+      height: 100%;
     }
     .img-dobule {
       @include bg(
@@ -275,7 +297,15 @@
         585px,
         592px
       );
-      @include flex-base(center, center);
+      margin-right: 30px;
+      @include breakpoint(pad) {
+        width: 322px;
+        height: 280px;
+      }
+      @include breakpoint(mobile) {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
     }
     .img-youth {
       @include bg(
@@ -283,10 +313,161 @@
         585px,
         592px
       );
-      @include flex-base(center, center);
+      @include breakpoint(pad) {
+        width: 322px;
+        height: 280px;
+      }
     }
-    .img-mr {
-      margin-right: 30px;
+  }
+}
+.recommend {
+  margin-top: -400px;
+  @include breakpoint(pad) {
+    margin-top: -300px;
+  }
+  .recommend-title {
+    @include font-h(h4);
+    color: $base-secondary;
+    text-align: center;
+    margin-bottom: 60px;
+    @include breakpoint(pad) {
+      margin-bottom: 32px;
+    }
+    @include breakpoint(mobile) {
+      margin-bottom: 16px;
+    }
+  }
+  .card {
+    @extend %content-width;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include breakpoint(pad) {
+      margin: 0 40px;
+    }
+    @include breakpoint(mobile) {
+      margin: 0 12px;
+    }
+    .list {
+      width: 23%;
+      @include breakpoint(pad) {
+        width: 48%;
+        margin-bottom: 24px;
+      }
+      @include breakpoint(mobile) {
+        width: 100%;
+      }
+    }
+    .border {
+      border: 1px solid #dee2e6;
+      background-color: $base-secondary;
+      padding: 16px;
+    }
+    .text {
+      padding-bottom: 16px;
+    }
+    .text-title {
+      font-weight: 500;
+    }
+    .text-gray {
+      color: #707070;
+    }
+    .img {
+      border: 0;
+      display: block;
+      @include breakpoint(pad) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.contact {
+  background-color: $bg-primary;
+  .content {
+    max-width: 792px;
+    margin: 0 auto;
+    padding: 64px 0 92px;
+  }
+  .title {
+    @include font-h(h4);
+    text-align: center;
+    padding-bottom: 24px;
+  }
+  .text {
+    @include font-p(p2);
+    margin-bottom: 20px;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  .checkbox {
+    display: flex;
+  }
+}
+.footer {
+  background-color: $base-primary;
+  .content {
+    @extend %content-width;
+    padding-top: 48px;
+    @include breakpoint(pad) {
+      padding: 40px 48px;
+    }
+  }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-menu {
+    display: flex;
+    @include breakpoint(mobile) {
+      display: none;
+    }
+    li {
+      margin-right: 48px;
+      a {
+        color: $base-secondary;
+      }
+    }
+  }
+  .nav-img {
+    display: flex;
+    li {
+      margin-left: 32px;
+      .img {
+        @include breakpoint(pad) {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+  .liaison-border {
+    border-bottom: 1px solid $base-secondary;
+    padding-bottom: 16px;
+  }
+  .liaison {
+    display: flex;
+    align-items: center;
+    p {
+      @include font-p(p1);
+      color: $base-secondary;
+      margin-left: 12px;
+    }
+  }
+  .copyright {
+    display: flex;
+    justify-content: space-between;
+    ul {
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      li {
+        color: $base-secondary;
+      }
     }
   }
 }
