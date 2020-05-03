@@ -1,9 +1,13 @@
 @mixin breakpoint($point) {
-  @if ($point == pad) {
+  @if ($point == md) {
     @media only screen and(max-width: 992px) {
       @content;
     }
-  } @else if ($point == mobile) {
+  } @else if ($point == sm) {
+    @media only screen and(max-width: 767px) {
+      @content;
+    }
+  } @else if ($point == xs) {
     @media only screen and(max-width: 576px) {
       @content;
     }
@@ -12,42 +16,42 @@
 @mixin font-h($size) {
   @if ($size == h2) {
     font-size: map-get($font-h2, pc);
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       font-size: map-get($font-h2, pad);
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       font-size: map-get($font-h2, mobile);
     }
   } @else if ($size == h3) {
     font-size: map-get($font-h3, pc);
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       font-size: map-get($font-h3, pad);
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       font-size: map-get($font-h3, mobile);
     }
   } @else if ($size == h4) {
     font-size: map-get($font-h4, pc);
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       font-size: map-get($font-h4, pad);
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       font-size: map-get($font-h4, mobile);
     }
   } @else if ($size == h5) {
     font-size: map-get($font-h5, pc);
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       font-size: map-get($font-h5, pad);
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       font-size: map-get($font-h5, mobile);
     }
   } @else if ($size == h6) {
     font-size: map-get($font-h6, pc);
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       font-size: map-get($font-h6, pad);
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       font-size: map-get($font-h6, mobile);
     }
   }
@@ -55,18 +59,18 @@
 @mixin font-p($size) {
   @if ($size == p1) {
     font-size: map-get($font-p1, pc);
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       font-size: map-get($font-p1, pad);
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       font-size: map-get($font-p1, mobile);
     }
   } @else if ($size == p2) {
     font-size: map-get($font-p2, pc);
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       font-size: map-get($font-p2, pad);
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       font-size: map-get($font-p2, mobile);
     }
   } @else if ($size == p3) {
@@ -83,10 +87,10 @@
 @mixin bg($img, $width: initial, $height: initial) {
   width: $width;
   height: $height;
-  background-image: url($img);
+  background: url($img);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
 }
 @mixin absolute(
   $top: initial,

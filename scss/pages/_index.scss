@@ -6,15 +6,15 @@
     initial,
     840px
   );
-  @include breakpoint(pad) {
+  @include breakpoint(md) {
     @include bg("https://upload.cc/i1/2020/04/25/jH0crS.png", initial, 840px);
   }
-  @include breakpoint(mobile) {
+  @include breakpoint(xs) {
     @include bg("https://upload.cc/i1/2020/04/25/Z0h7q1.png", initial, 394px);
   }
   .content {
     @include absolute(40%, 18%, 50%);
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       right: 5%;
     }
     .text {
@@ -33,10 +33,10 @@
 .column {
   background-color: $bg-primary;
   margin-bottom: 64px;
-  @include breakpoint(pad) {
+  @include breakpoint(md) {
     margin-bottom: 40px;
   }
-  @include breakpoint(mobile) {
+  @include breakpoint(xs) {
     margin-bottom: 24px;
   }
   .title {
@@ -44,10 +44,10 @@
     color: $text-primary;
     text-align: center;
     padding: 64px 0;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       padding: 40px 0 32px 0;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       padding: 32px 0;
     }
   }
@@ -55,7 +55,7 @@
     @extend %content-width;
     @include flex-base(space-around);
     padding-bottom: 80px;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       flex-wrap: wrap;
       justify-content: space-between;
       .order-1 {
@@ -65,16 +65,16 @@
         order: 2;
       }
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       justify-content: center;
     }
     .item {
       text-align: center;
-      @include breakpoint(pad) {
+      @include breakpoint(md) {
         width: 50%;
         margin-bottom: 40px;
       }
-      @include breakpoint(mobile) {
+      @include breakpoint(xs) {
         width: 100%;
         margin-bottom: 28px;
       }
@@ -82,7 +82,7 @@
         width: 100px;
         height: 100px;
         margin-bottom: 40px;
-        @include breakpoint(pad) {
+        @include breakpoint(md) {
           width: 80px;
           height: 80px;
           margin-bottom: 16px;
@@ -91,7 +91,7 @@
       .item-title {
         @include font-h(h6);
         color: $text-primary;
-        @include breakpoint(pad) {
+        @include breakpoint(md) {
           margin-bottom: 8px;
         }
       }
@@ -112,29 +112,29 @@
     color: $text-primary;
     text-align: center;
     margin-bottom: 60px;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       margin-bottom: 32px;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(sm) {
       margin-bottom: 16px;
     }
   }
   .item {
     @include flex-base(start, center);
     margin-bottom: 24px;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       justify-content: center;
       margin-bottom: 8px;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(sm) {
       justify-content: center;
       margin: 0 12px;
     }
     .img {
       width: 60%;
-      @include breakpoint(pad) {
+      @include breakpoint(md) {
         width: 50%;
-        @include breakpoint(mobile) {
+        @include breakpoint(sm) {
           width: 100%;
           position: relative;
         }
@@ -142,11 +142,11 @@
     }
     .img-icon {
       margin: 0 8px 0 24px;
-      @include breakpoint(pad) {
+      @include breakpoint(md) {
         width: 32px;
         height: 32px;
       }
-      @include breakpoint(mobile) {
+      @include breakpoint(sm) {
         color: $base-secondary;
         display: none;
       }
@@ -154,14 +154,14 @@
     .item-content {
       width: 30%;
       display: flex;
-      @include breakpoint(mobile) {
+      @include breakpoint(sm) {
         width: 100%;
         justify-content: center;
         position: absolute;
       }
     }
     .icon-optical {
-      @include breakpoint(mobile) {
+      @include breakpoint(sm) {
         @include bg(
           "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-diamond-white.svg",
           32px,
@@ -171,7 +171,7 @@
       }
     }
     .icon-functional {
-      @include breakpoint(mobile) {
+      @include breakpoint(sm) {
         @include bg(
           "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-thunder-white.svg",
           23px,
@@ -182,24 +182,29 @@
     }
   }
   .item-reverse {
-    @include flex-base(start, center);
+    @include flex-base(center, center);
     flex-direction: row-reverse;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       flex-direction: row;
-      justify-content: center;
+    }
+    .img {
+      filter: grayscale(100%);
+      &:hover {
+        filter: grayscale(0);
+        transition: 0.6s;
+      }
     }
     .content-reverse {
       width: 30%;
-      @include flex-base(start, center);
+      @include flex-base(center, center);
       flex-direction: row-reverse;
 
-      @include breakpoint(mobile) {
+      @include breakpoint(sm) {
         width: 100%;
-        justify-content: center;
         position: absolute;
       }
       .icon-sunglasses {
-        @include breakpoint(mobile) {
+        @include breakpoint(sm) {
           @include bg(
             "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/9af042262fc422f07175ee3ee88a7d1cf415a0a0/week3/icon-sun-white.svg",
             32px,
@@ -216,7 +221,7 @@
     margin-right: 24px;
     line-height: normal;
     display: block;
-    @include breakpoint(mobile) {
+    @include breakpoint(sm) {
       color: $base-secondary;
     }
   }
@@ -225,22 +230,17 @@
 //joint
 .joint {
   @include bg(
-    "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/bg.png",
-    initial,
-    2100px
+    "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/bg.png"
   );
-  @include breakpoint(pad) {
-    height: 1221px;
-  }
   .joint-title {
     @include font-h(h4);
     color: $base-secondary;
     text-align: center;
     padding: 64px 0 60px 0;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       padding: 40px 0 32px 0;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       padding: 24px 0 16px 0;
     }
   }
@@ -248,10 +248,10 @@
     display: flex;
     justify-content: center;
     margin: 0 48px 60px;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       margin-bottom: 40px;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       margin: 0 24px 20px;
     }
     .img-right {
@@ -273,15 +273,14 @@
   .module {
     @extend %content-width;
     display: flex;
-    margin-bottom: 144px;
-    @include breakpoint(pad) {
+    padding-bottom: 480px;
+    @include breakpoint(md) {
       justify-content: center;
-      margin-bottom: 40px;
+      padding-bottom: 400px;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       flex-wrap: wrap;
       justify-content: center;
-      margin-bottom: 24px;
     }
     .module-title {
       @include font-h(h2);
@@ -298,11 +297,11 @@
         592px
       );
       margin-right: 30px;
-      @include breakpoint(pad) {
+      @include breakpoint(md) {
         width: 322px;
         height: 280px;
       }
-      @include breakpoint(mobile) {
+      @include breakpoint(xs) {
         margin-right: 0;
         margin-bottom: 20px;
       }
@@ -313,7 +312,7 @@
         585px,
         592px
       );
-      @include breakpoint(pad) {
+      @include breakpoint(md) {
         width: 322px;
         height: 280px;
       }
@@ -321,19 +320,22 @@
   }
 }
 .recommend {
-  margin-top: -400px;
-  @include breakpoint(pad) {
-    margin-top: -300px;
+  margin-top: -300px;
+  @include breakpoint(md) {
+    margin-top: -350px;
+  }
+  @include breakpoint(xs) {
+    margin-top: -380px;
   }
   .recommend-title {
     @include font-h(h4);
     color: $base-secondary;
     text-align: center;
     margin-bottom: 60px;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       margin-bottom: 32px;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       margin-bottom: 16px;
     }
   }
@@ -343,19 +345,19 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       margin: 0 40px;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       margin: 0 12px;
     }
     .list {
       width: 23%;
-      @include breakpoint(pad) {
+      @include breakpoint(md) {
         width: 48%;
         margin-bottom: 24px;
       }
-      @include breakpoint(mobile) {
+      @include breakpoint(xs) {
         width: 100%;
       }
     }
@@ -376,7 +378,7 @@
     .img {
       border: 0;
       display: block;
-      @include breakpoint(pad) {
+      @include breakpoint(md) {
         width: 100%;
       }
     }
@@ -395,13 +397,18 @@
     text-align: center;
     padding-bottom: 24px;
   }
-  .text {
+  p {
     @include font-p(p2);
     margin-bottom: 20px;
   }
   .form {
     display: flex;
     flex-direction: column;
+  }
+  .text {
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    background-color: $bg-primary;
   }
   .checkbox {
     display: flex;
@@ -412,7 +419,7 @@
   .content {
     @extend %content-width;
     padding-top: 48px;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       padding: 40px 48px;
     }
   }
@@ -423,7 +430,7 @@
   }
   .nav-menu {
     display: flex;
-    @include breakpoint(mobile) {
+    @include breakpoint(xs) {
       display: none;
     }
     li {
@@ -438,7 +445,7 @@
     li {
       margin-left: 32px;
       .img {
-        @include breakpoint(pad) {
+        @include breakpoint(md) {
           width: 24px;
           height: 24px;
         }

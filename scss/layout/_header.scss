@@ -1,14 +1,14 @@
 .header {
   @include flex-base(space-between, center);
   background-color: $base-primary;
-  @include breakpoint(mobile) {
+  @include breakpoint(sm) {
     position: relative;
     justify-content: center;
   }
   .ham-icon {
     display: none;
     color: $base-secondary;
-    @include breakpoint(mobile) {
+    @include breakpoint(sm) {
       display: block;
       @include absolute(initial, initial, initial, 5%);
     }
@@ -21,10 +21,10 @@
     );
     @include hide-text();
     margin-left: 88px;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       margin-left: 48px;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(sm) {
       @include bg("https://upload.cc/i1/2020/04/25/qNFjUf.png", 48px, 30px);
       margin: 10px;
     }
@@ -33,10 +33,10 @@
     @include flex-base(center, center);
     margin-right: 88px;
     padding: 40px 0;
-    @include breakpoint(pad) {
+    @include breakpoint(md) {
       margin-right: 48px;
     }
-    @include breakpoint(mobile) {
+    @include breakpoint(sm) {
       @include absolute(100%);
       flex-direction: column;
       width: 100%;
@@ -45,19 +45,18 @@
     }
     .list {
       background-color: $base-primary;
-      @include breakpoint(mobile) {
+      @include breakpoint(sm) {
         width: 100%;
         transform: translateX(-100%);
-        transition: all 0.8s;
       }
       .menu {
         @include font-p(p3);
         margin-left: 64px;
         color: $base-secondary;
-        @include breakpoint(pad) {
+        @include breakpoint(md) {
           margin-left: 40px;
         }
-        @include breakpoint(mobile) {
+        @include breakpoint(sm) {
           margin-left: auto;
           text-align: center;
           border-top: 1px solid $base-secondary;
@@ -67,6 +66,7 @@
     }
     .active {
       transform: translateX(0);
+      transition: all 0.8s;
       &:hover {
         background-color: #8f0400;
       }
