@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>week3</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link
       rel="stylesheet"
@@ -163,23 +163,35 @@
             src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/product-5.png"
             alt=""
           />
-          <div class="img-bottom">
-            <div class="img-left">
+          <ul class="img-bottom">
+            <li class="img-left">
               <img
                 src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/product-6.png"
                 alt=""
               />
-            </div>
-            <div class="img-right">
+            </li>
+            <li class="img-right">
               <img
                 src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/product-7.png"
                 alt=""
               />
               <div class="btn">
-                <a href="#">MORE</a>
+                <div class="img-more">
+                  <img
+                    src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/more.png"
+                    alt=""
+                  />
+                </div>
+                <div class="more">
+                  <a href="#"
+                    >MORE<img
+                      src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/3bc5391ea669c8b8c1758ebc27c887e76c312232/week3/icon-arrow.svg"
+                      alt=""
+                  /></a>
+                </div>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </li>
       </ul>
       <ul class="module">
@@ -259,17 +271,24 @@
     <section class="contact">
       <div class="content">
         <h4 class="title">聯絡我們</h4>
-        <p class="text">
+        <p>
           我們相當重視您的意見，若您有任何疑問，可先參考「常見問題」，若仍有任何問題，請填妥以下資料，我們會在近期與您聯繫。
         </p>
         <form class="form" action="" method="post">
           <label for="name">姓名</label>
-          <input class="text" type="text" name="name" placeholder="陳小明" />
+          <input
+            class="text"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="陳小明"
+          />
           <label for="phone">聯絡電話</label>
           <input
             class="text"
             type="tel"
             name="phone"
+            id="phone"
             placeholder="0912-345-678"
           />
           <label for="email">電子郵件</label>
@@ -277,23 +296,22 @@
             class="text"
             type="email"
             name="email"
+            id="email"
             placeholder="example@email.com"
           />
           <label for="report">意見反應</label>
           <textarea
+            rows="7"
             class="text"
             name="report"
+            id="report"
             cols="30"
             placeholder="請輸入您的意見"
           ></textarea>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" />
-              <p class="tick">
-                我同意隱私權政策，並同意依隱私權政策中所述的方式處理自己的資料。
-              </p>
-            </label>
-          </div>
+          <label for="agree">
+            <input type="checkbox" class="checkbox" />
+            我同意隱私權政策，並同意依隱私權政策中所述的方式處理自己的資料。
+          </label>
         </form>
         <input class="submit" type="submit" value="確認送出" />
       </div>
@@ -335,6 +353,7 @@
         <div class="liaison-border">
           <div class="liaison">
             <img
+              class="phone"
               src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/3bc5391ea669c8b8c1758ebc27c887e76c312232/week3/icon-phone.svg"
               alt=""
             />
@@ -342,6 +361,7 @@
           </div>
           <div class="liaison">
             <img
+              class="email"
               src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/3bc5391ea669c8b8c1758ebc27c887e76c312232/week3/icon-mail.svg"
               alt=""
             />
@@ -360,7 +380,7 @@
           </ul>
           <ul>
             <li>隱私權政策</li>
-            <li>服務條款</li>
+            <li class="text">服務條款</li>
           </ul>
         </div>
       </div>

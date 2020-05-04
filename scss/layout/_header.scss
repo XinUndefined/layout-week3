@@ -25,7 +25,8 @@
       margin-left: 48px;
     }
     @include breakpoint(sm) {
-      @include bg("https://upload.cc/i1/2020/04/25/qNFjUf.png", 48px, 30px);
+      width: 48px;
+      height: 30px;
       margin: 10px;
     }
   }
