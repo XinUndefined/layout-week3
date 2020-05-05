@@ -877,6 +877,12 @@ h6 {
   right: 10%;
 }
 
+@media only screen and (max-width: 992px) {
+  .joint .img-main .img-more {
+    right: 15%;
+  }
+}
+
 .joint .img-main .more {
   width: 30%;
 }
@@ -886,10 +892,12 @@ h6 {
   font-weight: bold;
   background-color: #ffffff;
   color: #aa0601;
-  padding: 5px 30px;
+  padding: 5px 80px 5px 30px;
   position: absolute;
   right: 0;
   top: 25px;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 @media only screen and (max-width: 992px) {
@@ -904,10 +912,41 @@ h6 {
   }
 }
 
+.joint .img-main .more a:hover {
+  text-shadow: 0 -80px 0 #aa0701dc, 0 -150px 0 #aa070177;
+}
+
+@media only screen and (max-width: 992px) {
+  .joint .img-main .more a {
+    padding: 5px 50px 5px 20px;
+    top: 20px;
+    right: 10%;
+  }
+  .joint .img-main .more a:hover {
+    text-shadow: 0 -40px 0 #aa0701dc, 0 -80px 0 #aa070177;
+  }
+}
+
 @media only screen and (max-width: 576px) {
   .joint .img-main .more a {
     font-size: 14px;
   }
+  .joint .img-main .more a:hover {
+    text-shadow: 0 -20px 0 #aa0701dc, 0 -40px 0 #aa070177;
+  }
+}
+
+.joint .img-main .more a img {
+  position: absolute;
+  display: block;
+  top: 30%;
+  right: 10%;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.joint .img-main .more a img:hover {
+  right: 0;
 }
 
 @media only screen and (max-width: 992px) {
