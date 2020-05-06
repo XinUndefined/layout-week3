@@ -17,15 +17,27 @@
     @include breakpoint(xs) {
       right: 5%;
     }
-    .text {
-      @include font-p(p1);
+    p {
+      font-size: 36px;
       text-align: end;
       color: $text-primary;
       font-weight: 600;
+      @include breakpoint(md) {
+        font-size: 20px;
+      }
+      @include breakpoint(xs) {
+        font-size: 16px;
+      }
     }
-    .title {
-      @include font-h(h3);
+    h2 {
       color: $text-primary;
+      font-size: 64px;
+      @include breakpoint(md) {
+        font-size: 48px;
+      }
+      @include breakpoint(xs) {
+        font-size: 32px;
+      }
     }
   }
 }
@@ -39,19 +51,21 @@
   @include breakpoint(xs) {
     margin-bottom: 24px;
   }
-  .title {
-    @include font-h(h4);
+  h3 {
+    font-size: 48px;
     color: $text-primary;
     text-align: center;
     padding: 64px 0;
     @include breakpoint(md) {
       padding: 40px 0 32px 0;
+      font-size: 32px;
     }
     @include breakpoint(xs) {
       padding: 32px 0;
+      font-size: 24px;
     }
   }
-  .list {
+  ul {
     @extend %content-width;
     @include flex-base(space-around);
     padding-bottom: 80px;
@@ -68,7 +82,7 @@
     @include breakpoint(xs) {
       justify-content: center;
     }
-    .item {
+    li {
       text-align: center;
       @include breakpoint(md) {
         width: 50%;
@@ -78,7 +92,7 @@
         width: 100%;
         margin-bottom: 28px;
       }
-      .img {
+      img {
         width: 100px;
         height: 100px;
         margin-bottom: 40px;
@@ -88,14 +102,15 @@
           margin-bottom: 16px;
         }
       }
-      .item-title {
-        @include font-h(h6);
+      h4 {
+        font-size: 24px;
         color: $text-primary;
         @include breakpoint(md) {
           margin-bottom: 8px;
+          font-size: 20px;
         }
       }
-      .text {
+      p {
         text-align: justify;
         display: inline-block;
         width: 208px;
@@ -107,16 +122,18 @@
 .classic {
   @extend %content-width;
   margin-bottom: 80px;
-  .title {
-    @include font-h(h4);
+  h2 {
+    font-size: 48px;
     color: $text-primary;
     text-align: center;
     margin-bottom: 60px;
     @include breakpoint(md) {
       margin-bottom: 32px;
+      font-size: 32px;
     }
     @include breakpoint(sm) {
       margin-bottom: 16px;
+      font-size: 24px;
     }
   }
   .item {
@@ -130,7 +147,7 @@
       justify-content: center;
       margin: 0 12px;
     }
-    .img {
+    .item-img {
       width: 60%;
       @include breakpoint(md) {
         width: 50%;
@@ -187,7 +204,7 @@
     @include breakpoint(md) {
       flex-direction: row;
     }
-    .img {
+    .img-filter {
       filter: grayscale(100%);
       &:hover {
         filter: grayscale(0);
@@ -218,12 +235,15 @@
       }
     }
   }
-  .text {
-    @include font-h(h5);
+  h5 {
+    font-size: 48px;
     color: $base-primary;
     margin-right: 24px;
     line-height: normal;
     display: block;
+    @include breakpoint(md) {
+      font-size: 28px;
+    }
     @include breakpoint(sm) {
       color: $base-secondary;
     }
@@ -235,21 +255,22 @@
   @include bg(
     "https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/master/week3/bg.png"
   );
-  .joint-title {
-    @include font-h(h4);
+  h2 {
+    font-size: 48px;
     color: $base-secondary;
     text-align: center;
     padding: 64px 0 60px 0;
     @include breakpoint(md) {
       padding: 40px 0 32px 0;
+      font-size: 32px;
     }
     @include breakpoint(xs) {
       padding: 24px 0 16px 0;
+      font-size: 24px;
     }
   }
   .img-main {
-    display: flex;
-    justify-content: center;
+    @include flex-base(center);
     margin: 0 48px 60px;
     @include breakpoint(md) {
       margin-bottom: 40px;
@@ -257,10 +278,10 @@
     @include breakpoint(xs) {
       margin: 0 24px 20px;
     }
-    .img-right {
+    .img-redWoman {
       margin-left: 8px;
     }
-    .img-bottom {
+    .img-bottomRight {
       display: flex;
       @include breakpoint(xs) {
       }
@@ -271,8 +292,7 @@
     }
     .img-more {
       width: 32%;
-      position: absolute;
-      right: 10%;
+      @include absolute(initial, 10%);
       @include breakpoint(md) {
         width: 30%;
         right: 15%;
@@ -293,9 +313,7 @@
         color: $base-primary;
         width: 40%;
         padding-left: 15px;
-        position: absolute;
-        right: 0;
-        top: 25px;
+        @include absolute(25px, 0);
         transition: 1s;
         @media only screen and(max-width:1600px) {
           top: 35px;
@@ -337,10 +355,8 @@
           top: 5px;
         }
         img {
-          position: absolute;
+          @include absolute(30%, 5%);
           display: block;
-          top: 30%;
-          right: 5%;
           transition: 1s;
           &:hover {
             right: 0;
@@ -389,13 +405,16 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-    .module-title {
-      @include font-h(h2);
+    h3 {
+      font-size: 72px;
       @include flex-base(center, center);
       color: $base-primary;
       background-color: hsla(0, 0%, 100%, 0.5);
       width: 100%;
       height: 100%;
+      @include breakpoint(md) {
+        font-size: 32px;
+      }
     }
     .img-dobule {
       @include bg(
@@ -426,6 +445,7 @@
     }
   }
 }
+// recommend
 .recommend {
   margin-top: -300px;
   @include breakpoint(md) {
@@ -434,23 +454,24 @@
   @include breakpoint(xs) {
     margin-top: -380px;
   }
-  .recommend-title {
-    @include font-h(h4);
+  h2 {
+    font-size: 48px;
     color: $base-secondary;
     text-align: center;
     margin-bottom: 60px;
     @include breakpoint(md) {
       margin-bottom: 32px;
+      font-size: 32px;
     }
     @include breakpoint(xs) {
       margin-bottom: 16px;
+      font-size: 24px;
     }
   }
-  .card {
+  ul {
     @extend %content-width;
     margin-bottom: 80px;
-    display: flex;
-    justify-content: space-between;
+    @include flex-base(space-between);
     flex-wrap: wrap;
     @include breakpoint(md) {
       margin: 0 40px;
@@ -458,7 +479,7 @@
     @include breakpoint(xs) {
       margin: 0 12px;
     }
-    .list {
+    li {
       width: 23%;
       @include breakpoint(md) {
         width: 48%;
@@ -482,7 +503,7 @@
     .text-gray {
       color: #707070;
     }
-    .img {
+    img {
       border: 0;
       display: block;
       @include breakpoint(md) {
@@ -491,7 +512,7 @@
     }
   }
 }
-
+// contact
 .contact {
   background-color: $bg-primary;
   .content {
@@ -508,22 +529,25 @@
       padding: 24px 0 48px;
     }
   }
-  .title {
-    @include font-h(h4);
+  h2 {
+    font-size: 48px;
     text-align: center;
     padding-bottom: 24px;
     @include breakpoint(md) {
       padding-bottom: 16px;
+      font-size: 32px;
     }
     @include breakpoint(xs) {
       padding-bottom: 8px;
+      font-size: 24px;
     }
   }
   p {
-    @include font-p(p2);
+    font-size: 20px;
     margin-bottom: 20px;
     @include breakpoint(md) {
       margin-bottom: 16px;
+      font-size: 16px;
     }
     @include breakpoint(xs) {
       margin-bottom: 8px;
@@ -545,6 +569,7 @@
       padding: 7px 12px;
     }
   }
+  // checkbox偷懶XD
   .checkbox {
     outline: 2px solid #000;
   }
@@ -571,6 +596,7 @@
     }
   }
 }
+// footer
 .footer {
   background-color: $base-primary;
   .content {
@@ -582,12 +608,9 @@
     }
   }
   .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-base(space-between, center);
     @include breakpoint(sm) {
-      position: absolute;
-      right: 48px;
+      @include absolute(initial, 48px);
     }
   }
   .nav-menu {
@@ -627,12 +650,17 @@
     }
   }
   .liaison {
-    display: flex;
-    align-items: center;
+    @include flex-base(start, center);
     margin-bottom: 16px;
     p {
-      @include font-p(p1);
+      font-size: 36px;
       color: $base-secondary;
+      @include breakpoint(md) {
+        font-size: 20px;
+      }
+      @include breakpoint(sm) {
+        font-size: 16px;
+      }
     }
     .phone {
       margin-right: 23px;
@@ -652,15 +680,13 @@
     }
   }
   .copyright {
-    display: flex;
-    justify-content: space-between;
+    @include flex-base(space-between);
     @include breakpoint(sm) {
       justify-content: start;
       flex-direction: column;
     }
     ul {
-      display: flex;
-      align-items: center;
+      @include flex-base(start, center);
       padding: 20px 0;
       @include breakpoint(sm) {
         flex-direction: column;
@@ -682,8 +708,7 @@
             width: 46px;
             height: 27px;
             display: block;
-            position: absolute;
-            right: 0;
+            @include absolute(initial, 0);
             bottom: 10%;
           }
         }

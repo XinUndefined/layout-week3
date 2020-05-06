@@ -13,72 +13,7 @@
     }
   }
 }
-@mixin font-h($size) {
-  @if ($size == h2) {
-    font-size: map-get($font-h2, pc);
-    @include breakpoint(md) {
-      font-size: map-get($font-h2, pad);
-    }
-    @include breakpoint(xs) {
-      font-size: map-get($font-h2, mobile);
-    }
-  } @else if ($size == h3) {
-    font-size: map-get($font-h3, pc);
-    @include breakpoint(md) {
-      font-size: map-get($font-h3, pad);
-    }
-    @include breakpoint(xs) {
-      font-size: map-get($font-h3, mobile);
-    }
-  } @else if ($size == h4) {
-    font-size: map-get($font-h4, pc);
-    @include breakpoint(md) {
-      font-size: map-get($font-h4, pad);
-    }
-    @include breakpoint(xs) {
-      font-size: map-get($font-h4, mobile);
-    }
-  } @else if ($size == h5) {
-    font-size: map-get($font-h5, pc);
-    @include breakpoint(md) {
-      font-size: map-get($font-h5, pad);
-    }
-    @include breakpoint(xs) {
-      font-size: map-get($font-h5, mobile);
-    }
-  } @else if ($size == h6) {
-    font-size: map-get($font-h6, pc);
-    @include breakpoint(md) {
-      font-size: map-get($font-h6, pad);
-    }
-    @include breakpoint(xs) {
-      font-size: map-get($font-h6, mobile);
-    }
-  }
-}
-@mixin font-p($size) {
-  @if ($size == p1) {
-    font-size: map-get($font-p1, pc);
-    @include breakpoint(md) {
-      font-size: map-get($font-p1, pad);
-    }
-    @include breakpoint(xs) {
-      font-size: map-get($font-p1, mobile);
-    }
-  } @else if ($size == p2) {
-    font-size: map-get($font-p2, pc);
-    @include breakpoint(md) {
-      font-size: map-get($font-p2, pad);
-    }
-    @include breakpoint(xs) {
-      font-size: map-get($font-p2, mobile);
-    }
-  } @else if ($size == p3) {
-    font-size: $font-p3;
-  } @else if ($size == p4) {
-    font-size: $font-p4;
-  }
-}
+// MORE無腦寫法，多見諒QQ
 @mixin font-more() {
   @media only screen and(max-width:1920px) {
     font-size: 72px;
