@@ -262,6 +262,8 @@
     }
     .img-bottom {
       display: flex;
+      @include breakpoint(xs) {
+      }
     }
     .btn {
       max-width: 818px;
@@ -272,54 +274,104 @@
       position: absolute;
       right: 10%;
       @include breakpoint(md) {
+        width: 30%;
         right: 15%;
+      }
+      @include breakpoint(xs) {
+        left: 0;
+      }
+      @media only screen and(max-width:400px) {
+        width: 28%;
       }
     }
     .more {
       width: 30%;
       a {
-        @include font-h(h2);
+        @include font-more();
         font-weight: bold;
         background-color: $base-secondary;
         color: $base-primary;
-        padding: 5px 80px 5px 30px;
+        width: 40%;
+        padding-left: 15px;
         position: absolute;
         right: 0;
         top: 25px;
         transition: 1s;
+        @media only screen and(max-width:1600px) {
+          top: 35px;
+        }
+        @media only screen and(max-width:1200px) {
+          top: 25px;
+        }
         &:hover {
           text-shadow: 0 -80px 0 #aa0701dc, 0 -150px 0 #aa070177;
         }
         @include breakpoint(md) {
-          padding: 5px 50px 5px 20px;
-          top: 20px;
-          right: 10%;
+          top: 16px;
+          width: 42%;
           &:hover {
             text-shadow: 0 -40px 0 #aa0701dc, 0 -80px 0 #aa070177;
           }
         }
+        @media only screen and(max-width:750px) {
+          top: 12px;
+        }
         @include breakpoint(xs) {
-          font-size: 14px;
+          left: 3%;
+          width: 35%;
+          padding-left: 5px;
           &:hover {
             text-shadow: 0 -20px 0 #aa0701dc, 0 -40px 0 #aa070177;
           }
+        }
+        @media only screen and(max-width:500px) {
+          top: 10px;
+        }
+        @media only screen and(max-width:500px) {
+          width: 38%;
+        }
+        @media only screen and(max-width:450px) {
+          top: 8px;
+        }
+        @media only screen and(max-width:400px) {
+          top: 5px;
         }
         img {
           position: absolute;
           display: block;
           top: 30%;
-          right: 10%;
+          right: 5%;
           transition: 1s;
           &:hover {
             right: 0;
+          }
+          @media only screen and(max-width:1400px) {
+            widows: 40px;
+            height: 40px;
+          }
+          @media only screen and(max-width:1200px) {
+            widows: 35px;
+            height: 35px;
           }
           @include breakpoint(md) {
             widows: 27px;
             height: 27px;
           }
+          @media only screen and(max-width:800px) {
+            widows: 24px;
+            height: 24px;
+          }
           @include breakpoint(sm) {
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
+          }
+          @media only screen and(max-width:500px) {
+            top: 18%;
+          }
+          @media only screen and(max-width:400px) {
+            width: 10px;
+            width: 10px;
+            top: 18%;
           }
         }
       }
@@ -562,6 +614,9 @@
           width: 24px;
           height: 24px;
         }
+      }
+      @include breakpoint(md) {
+        margin-left: 24px;
       }
     }
   }
